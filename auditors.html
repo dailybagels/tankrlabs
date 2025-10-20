@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Tankr Labs — Smart Contract Audits, Simplified.</title>
+<meta name="description" content="Tankr Labs is an aggregator that connects crypto projects with vetted smart contract auditors." />
+<meta name="theme-color" content="#0f172a" />
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+<link rel="preload" href="/css/style.css" as="style">
+<link rel="stylesheet" href="/css/style.css" />
+<meta property="og:title" content="Tankr Labs — Smart Contract Audits, Simplified." />
+<meta property="og:description" content="We match crypto projects with the right auditors — fast, transparent, and coordinated." />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="/assets/og-card.svg" />
+<meta property="twitter:card" content="summary_large_image" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="/"><img src="/assets/logo-mark.svg" alt="Tankr Labs logo" /> <span>Tankr Labs</span></a>
+    <nav>
+      <a href="/how-it-works.html">How it works</a>
+      <a href="/projects.html">For Projects</a>
+      <a href="/auditors.html">For Auditors</a>
+      <a href="/pricing.html">Pricing</a>
+      <a class="btn small" href="/contact.html">Contact</a>
+      <button id="modeToggle" aria-label="Toggle theme">☾</button>
+    </nav>
+  </div>
+</header>
+
+<main class="container page">
+  <h1>For Auditors</h1>
+  <p class="xl">Get qualified leads, clean scopes, and ready repos.</p>
+  <section class="service-block">
+    <h2>What you get</h2>
+    <ul class="bullets">
+      <li>Qualified requests with scope & timelines</li>
+      <li>Direct client comms after selection</li>
+      <li>Standardized kickoff & reporting expectations</li>
+    </ul>
+  </section>
+  <section class="service-block">
+    <h2>Who we’re looking for</h2>
+    <ul class="bullets">
+      <li>Track record with public reports or contest placements</li>
+      <li>Language coverage: Solidity, Vyper, Rust</li>
+      <li>Availability windows within 2–6 weeks</li>
+    </ul>
+  </section>
+  <div class="card form" id="auditorForm">
+    <h3>Join the network</h3>
+    <div class="row">
+      <label>Contact email<input type="email" name="email" placeholder="auditor@you.com" required /></label>
+      <label>Portfolio / Reports<input name="work" placeholder="Links to public reports or GitHub" required /></label>
+    </div>
+    <div class="row">
+      <label>Tech stack<input name="stack" placeholder="Solidity, Vyper, Rust…" /></label>
+      <label>Availability<input name="avail" placeholder="e.g., Nov–Dec" /></label>
+    </div>
+    <label>Notes<textarea name="notes" rows="5" placeholder="Focus areas, rates, constraints…"></textarea></label>
+    <div class="actions">
+      <button class="btn" onclick="submitAuditor()">Send</button>
+      <a class="btn ghost" href="mailto:hello@tankrlabs.com">Email instead</a>
+    </div>
+    <p id="auditorStatus" class="muted"></p>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <div class="brand-foot"><img src="/assets/logo-mark.svg" alt="Tankr Labs"> <strong>Tankr Labs</strong></div>
+      <p>Aggregator for crypto projects & smart contract auditors.</p>
+      <p class="muted">© Tankr Labs 2025. All rights reserved.</p>
+    </div>
+    <div>
+      <h4>Company</h4>
+      <ul>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/how-it-works.html">How it works</a></li>
+        <li><a href="/pricing.html">Pricing</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="mailto:hello@tankrlabs.com">hello@tankrlabs.com</a></li>
+        <li><a href="https://tankrlabs.com" target="_blank" rel="noopener">tankrlabs.com</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+<script src="/js/main.js" defer></script>
+
+<script>
+function submitAuditor(){
+  const email = document.querySelector('#auditorForm [name=email]').value||'';
+  const work = document.querySelector('#auditorForm [name=work]').value||'';
+  const stack = document.querySelector('#auditorForm [name=stack]').value||'';
+  const avail = document.querySelector('#auditorForm [name=avail]').value||'';
+  const notes = document.querySelector('#auditorForm [name=notes]').value||'';
+  const body = encodeURIComponent(['New auditor application:','Email: '+email,'Work: '+work,'Stack: '+stack,'Availability: '+avail,'',notes].join('\n'));
+  const subject = encodeURIComponent('Auditor application — '+(email||''));
+  window.location.href='mailto:hello@tankrlabs.com?subject='+subject+'&body='+body;
+  const s=document.getElementById('auditorStatus'); if(s) s.textContent='Opening your email client…';
+}
+</script>
+</body>
+</html>
