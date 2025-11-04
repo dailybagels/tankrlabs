@@ -2,6 +2,13 @@
   const key='tankr-theme';
   const root=document.documentElement;
   const btn=document.getElementById('modeToggle');
+  const loader=document.querySelector('.loader');
+  // Hide loader when page is loaded
+  if(loader){
+    window.addEventListener('load',()=>{
+      setTimeout(()=>{loader.classList.add('hidden');},300);
+    });
+  }
   // Disable light mode entirely
   root.classList.remove('light');
   try{ localStorage.removeItem(key); }catch(e){}
