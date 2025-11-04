@@ -2,14 +2,10 @@
   const key='tankr-theme';
   const root=document.documentElement;
   const btn=document.getElementById('modeToggle');
-  const saved=localStorage.getItem(key);
-  if(saved==='light') root.classList.add('light');
-  if(btn){
-    btn.addEventListener('click',()=>{
-      root.classList.toggle('light');
-      localStorage.setItem(key, root.classList.contains('light')?'light':'dark');
-    });
-  }
+  // Disable light mode entirely
+  root.classList.remove('light');
+  try{ localStorage.removeItem(key); }catch(e){}
+  if(btn){ btn.setAttribute('hidden','hidden'); }
   const form=document.getElementById('contactForm');
   const status=document.getElementById('formStatus');
   if(form){
